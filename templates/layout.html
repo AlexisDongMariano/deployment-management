@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/bootstrap.css') }}"> -->
+    <meta charset="UTF-8">
+    <title>Deployments</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/bootstrap.min.css') }}">
+    <style>
+      body {
+          background-color: #f8f9fa;
+      }
+      .card {
+          border: 1px solid #dee2e6;
+          border-radius: 0;
+          box-shadow: none;
+      }
+      .card-header {
+          background-color: #e9ecef;
+          border-bottom: 1px solid #dee2e6;
+          border-radius: 0;
+      }
+      /* .card-header button {
+          text-decoration: none;
+          color: #000;
+          font-weight: bold;
+      } */
+      /* .card-header button:hover {
+          color: #0056b3;
+      } */
+      .table th, .table td {
+          vertical-align: middle;
+      }
+      .edit-button {
+          float: right;
+      }
+      .badge {
+          background-color: #6c757d;
+      }
+  </style>
+</head>
+<body>
+
+  {% block content %}
+
+  {% endblock %}
+    <script src="{{ url_for('static', path='/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', path='/js/base.js') }}" defer></script>
+    <!-- <script src="{{ url_for('static', path='/js/bootstrap.js') }}"></script> -->
+</body>
+</html>

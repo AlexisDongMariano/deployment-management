@@ -1,0 +1,389 @@
+{% include 'layout.html' %}
+
+<!-- <div class="container mt-5">
+  <h1 class="mb-4">Customers</h1>
+  <div class="accordion" id="customersAccordion">
+      {% for customer in customers %}
+      <div class="card">
+          <div class="card-header" id="heading{{ customer.id }}">
+              <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ customer.id }}" aria-expanded="true" aria-controls="collapse{{ customer.id }}">
+                      {{ customer.customer_name }}
+                  </button>
+              </h2>
+          </div>
+          <div id="collapse{{ customer.id }}" class="collapse" aria-labelledby="heading{{ customer.id }}" data-bs-parent="#customersAccordion">
+              <div class="card-body">
+                  <h5>Instances</h5>
+                  <table class="table table-striped">
+                      <thead>
+                          <tr>
+                              <th>ID</th>
+                              <th>Instance Name</th>
+                              <th>C55 Version</th>
+                              <th>Analytics Enabled</th>
+                              <th>Last Deployment</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for instance in customer.instances %}
+                          <tr>
+                              <td>{{ instance.id }}</td>
+                              <td>{{ instance.instance_name }}</td>
+                              <td>{{ instance.c55_version }}</td>
+                              <td>{{ instance.analytics_enabled }}</td>
+                              <td>{{ instance.last_deployment }}</td>
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+</div> -->
+
+<!-- <div class="container mt-5">
+  <h1 class="mb-4">Customers</h1>
+  <div class="accordion" id="customersAccordion">
+    {% for customer in customers %}
+    <div class="card">
+      <div class="card-header" id="heading{{ customer.id }}">
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapse{{ customer.id }}" aria-expanded="true" aria-controls="collapse{{ customer.id }}">
+            {{ customer.customer_name }}
+          </button>
+        </h2>
+      </div>
+      <div id="collapse{{ customer.id }}" class="collapse" aria-labelledby="heading{{ customer.id }}"
+        data-bs-parent="#customersAccordion">
+        <div class="card-body">
+          <h5>AWS Region</h5>
+          <p>{{ customer.aws_region }}</p>
+          <h5>Contact Information</h5>
+          <ul>
+            {% for contact in customer.cx_contacts %}
+            <li>{{ contact.username }} - {{ contact.email }}</li>
+            {% endfor %}
+          </ul>
+          <h5>Instances</h5>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Instance Name</th>
+                <th>C55 Version</th>
+                <th>Analytics Enabled</th>
+                <th>Last Deployment</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for instance in customer.instances %}
+              <tr>
+                <td>{{ instance.id }}</td>
+                <td>{{ instance.instance_name }}</td>
+                <td>{{ instance.c55_version }}</td>
+                <td>{{ instance.analytics_enabled }}</td>
+                <td>{{ instance.last_deployment }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div> -->
+
+
+<!-- <div class="container">
+  <h1>Hello, Bootstrap!</h1>
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
+          Accordion Item #1
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          This is the first item's accordion body.
+        </div>
+      </div>
+    </div>
+    
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Accordion Item #2
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          This is the second item's accordion body.
+        </div>
+      </div>
+    </div>
+  
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Accordion Item #3
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          This is the third item's accordion body.
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+<!-- test na accordion
+<div class="container mt-5">
+  <h1 class="mb-4">Hello, Bootstrap!</h1>
+  <div class="accordion" id="accordionExample">
+
+    {% for customer in customers %}
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading{{ customer.id }}">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapse{{ customer.id }}" aria-expanded="false" aria-controls="collapse{{ customer.id }}">
+          {{ customer.customer_name }}
+        </button>
+      </h2>
+      <div id="collapse{{ customer.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ customer.id }}"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          AWS REGION: {{ customer.aws_region }}
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
+          Accordion Item #1
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          This is the first item's accordion body.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+          aria-expanded="false" aria-controls="collapseTwo">
+          Accordion Item #2
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          This is the second item's accordion body.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Accordion Item #3
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          This is the third item's accordion body.
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- list lang na hiwahiwalay -->
+<!-- <div class="container mt-5">
+  <h1 class="mb-4 text-center">Customers</h1>
+  <div class="accordion" id="customersAccordion">
+    {% for customer in customers %}
+    <div class="card mb-3">
+      <div class="card-header" id="heading{{ customer.id }}">
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapse{{ customer.id }}" aria-expanded="true" aria-controls="collapse{{ customer.id }}">
+            {{ customer.customer_name }}
+          </button>
+        </h2>
+      </div>
+      <div id="collapse{{ customer.id }}" class="collapse" aria-labelledby="heading{{ customer.id }}"
+        data-bs-parent="#customersAccordion">
+        <div class="card-body">
+          <h5>AWS Region</h5>
+          <p>{{ customer.aws_region }}</p>
+          <h5>Contact Information</h5>
+          <ul class="list-group mb-3">
+            {% for contact in customer.cx_contacts %}
+            <li class="list-group-item">{{ contact.username }} - {{ contact.email }}</li>
+            {% endfor %}
+          </ul>
+          <h5>Instances</h5>
+          <table class="table table-striped table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>Instance Name</th>
+                <th>C55 Version</th>
+                <th>Analytics Enabled</th>
+                <th>Last Deployment</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for instance in customer.instances %}
+              <tr>
+                <td>{{ instance.id }}</td>
+                <td>{{ instance.instance_name }}</td>
+                <td>{{ instance.c55_version }}</td>
+                <td>{{ instance.analytics_enabled }}</td>
+                <td>{{ instance.last_deployment }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div> -->
+
+
+<!-- <div class="container mt-5">
+  <h1 class="mb-4 text-center">Customers</h1>
+  <div class="accordion" id="customersAccordion">
+    {% for customer in customers %}
+    <div class="card mb-3">
+      <div class="card-header d-flex justify-content-between align-items-center" id="heading{{ customer.id }}">
+        <div>
+          <button class="btn btn-link" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapse{{ customer.id }}" aria-expanded="true" aria-controls="collapse{{ customer.id }}">
+            {{ customer.customer_name }}
+          </button>
+          <span class="badge bg-secondary">{{ customer.aws_region }}</span>
+        </div>
+        <button class="btn btn-primary edit-button" onclick="editCustomer({{ customer.id }})">Edit</button>
+      </div>
+      <div id="collapse{{ customer.id }}" class="collapse" aria-labelledby="heading{{ customer.id }}"
+        data-bs-parent="#customersAccordion">
+        <div class="card-body">
+          <h5>Contact Information</h5>
+          <ul class="list-group mb-3">
+            {% for contact in customer.cx_contacts %}
+            <li class="list-group-item">{{ contact.username }} - {{ contact.email }}</li>
+            {% endfor %}
+          </ul>
+          <h5>Instances</h5>
+          <table class="table table-striped table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>Instance Name</th>
+                <th>C55 Version</th>
+                <th>Analytics Enabled</th>
+                <th>Last Deployment</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for instance in customer.instances %}
+              <tr>
+                <td>{{ instance.id }}</td>
+                <td>{{ instance.instance_name }}</td>
+                <td>{{ instance.c55_version }}</td>
+                <td>{{ instance.analytics_enabled }}</td>
+                <td>{{ instance.last_deployment }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div> -->
+
+<div class="container mt-5">
+  <h1 class="mb-4 text-center">Customers</h1>
+  <div class="accordion" id="customersAccordion">
+    {% for customer in customers %}
+    <div class="card mb-3">
+      <div class="card-header d-flex justify-content-between align-items-center" id="heading{{ customer.id }}">
+        <div>
+          <button class="btn btn-link" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapse{{ customer.id }}" aria-expanded="true" aria-controls="collapse{{ customer.id }}">
+            {{ customer.customer_name }}
+          </button>
+          <span class="badge">{{ customer.aws_region }}</span>
+        </div>
+        <button class="btn btn-primary edit-button" onclick="window.location.href='/customers/edit-customer-page/{{customer.id}}'">Edit</button>
+      </div>
+      <div id="collapse{{ customer.id }}" class="collapse" aria-labelledby="heading{{ customer.id }}"
+        data-bs-parent="#customersAccordion">
+        <div class="card-body">
+          <h5>Contact Information</h5>
+          <ul class="list-group mb-3">
+            {% for contact in customer.cx_contacts %}
+            <li class="list-group-item">{{ contact.username }} - {{ contact.email }}</li>
+            {% endfor %}
+          </ul>
+          <h5>Instances</h5>
+          <table class="table table-striped table-hover">
+            <thead class="table-light">
+              <tr>
+                <th>ID</th>
+                <th>Instance Name</th>
+                <th>C55 Version</th>
+                <th>Analytics Enabled</th>
+                <th>Last Deployment</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for instance in customer.instances %}
+              <tr>
+                <td>{{ instance.id }}</td>
+                <td>{{ instance.instance_name }}</td>
+                <td>{{ instance.c55_version }}</td>
+                <td>{{ instance.analytics_enabled }}</td>
+                <td>{{ instance.last_deployment }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

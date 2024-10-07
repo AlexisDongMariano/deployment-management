@@ -1,0 +1,106 @@
+{% include 'layout.html' %}
+
+
+
+<div class="container mt-5" data-customer-id="{{ customer_id }}">
+  <h1 class="mb-4 text-center">Edit Customer</h1>
+
+  <!-- Placeholder for Bootstrap alert message -->
+  <div id="alertPlaceholder"></div>
+
+  <form id="editCustomerForm" action="/customers/{{ customer_id }}" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <h1>CUSTOMER ID: {{ customer_id }}</h1>
+    <div class="mb-3">
+      <label for="customer_name" class="form-label">Customer Name</label>
+      <input type="text" class="form-control" id="customer_name" name="customer_name"
+        value="{{ customer.customer_name }}" required>
+    </div>
+    <div class="mb-3">
+      <label for="aws_region" class="form-label">AWS Region</label>
+      <input type="text" class="form-control" id="aws_region" name="aws_region" value="{{ customer.aws_region }}">
+    </div>
+    <div class="mb-3">
+      <label for="cx_contacts" class="form-label" hidden>Contact IDs (comma-separated)</label>
+      <input type="text" class="form-control" id="cx_contacts" name="cx_contacts"
+        value="{% for contact in customer.cx_contacts %}{{ contact.id }}{% if not loop.last %}, {% endif %}{% endfor %}"
+        hidden>
+      <!-- <button type="button" class="btn btn-secondary mt-2" data-bs-toggle="modal"
+        data-bs-target="#editContactsModal">Edit Contacts</button> -->
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Selected Contacts</label>
+      <ul class="list-group" id="selectedContactsList">
+        {% for contact in customer.cx_contacts %}
+        <li class="list-group-item">{{ contact.username }}</li>
+        {% endfor %}
+      </ul>
+      <button type="button" class="btn btn-secondary mt-2" data-bs-toggle="modal"
+        data-bs-target="#editContactsModal">Edit Contacts</button>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a href="/customer-page" class="btn btn-secondary">Back</a>
+  </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editContactsModal" tabindex="-1" aria-labelledby="editContactsModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editContactsModalLabel">Edit Contacts</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="contactsForm">
+          {% set customer_contact_ids = customer.cx_contacts | map(attribute='id') | list %}
+
+          {% for contact in all_cx %}
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="{{ contact.id }}" id="contact{{ contact.id }}"
+              data-username="{{ contact.username }}" {% if contact.id in customer_contact_ids %}checked{% endif %}>
+
+            <label class="form-check-label" for="contact{{ contact.id }}">
+              {{ contact.username }}
+            </label>
+          </div>
+          {% endfor %}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="saveContactsButton">Save</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- <div class="container mt-5" data-customer-id="{{ customer_id }}">
+  <h1 class="mb-4 text-center">Edit Customer</h1>
+  <form id="editCustomerForm" action="/customers/{{ customer_id }}" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <div class="mb-3">
+      <label for="customer_name" class="form-label">Customer Name</label>
+      <input type="text" class="form-control" id="customer_name" name="customer_name"
+        value="{{ customer.customer_name }}" required>
+    </div>
+    <div class="mb-3">
+      <label for="aws_region" class="form-label">AWS Region</label>
+      <input type="text" class="form-control" id="aws_region" name="aws_region" value="{{ customer.aws_region }}">
+    </div>
+    <div class="mb-3">
+      <label for="cx_contacts" class="form-label">Contact IDs (comma-separated)</label>
+      <input type="text" class="form-control" id="cx_contacts" name="cx_contacts"
+        value="{% for contact in customer.cx_contacts %}{{ contact.id }}{% if not loop.last %}, {% endif %}{% endfor %}">
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+  </form>
+</div> -->
